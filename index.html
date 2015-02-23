@@ -24,30 +24,34 @@
 <script type="text/javascript">
 $(function () {
     $.getJSON("schemas/index.json", loadApiList);
-
-    var schema = window.location.search.match(/schema=([^&]+)/);
-    if (schema && schema.length > 1) {
-        schema = decodeURIComponent(schema[1]);
-        loadSwagger(schema);
-    }
 }); 
 
 function loadApiList(data) {
+    window.xivoApis = data.apis;
     var container = $("<ul></ul>");
-    $.each(data.apis, function(key, api) {
+    $.each(data.apis, function(api, info) {
         var item = $("<li></li>");
         $("<a></a>")
-            .attr("href", "?schema=" + api.href)
-            .html(api.title)
+            .attr("href", "?schema=" + api)
+            .html(info.title)
             .appendTo(item);
         item.appendTo(container);
     });
     $("#api-list").append(container);
+
+    loadSwagger();
 }
 
-function loadSwagger(url) {
+function loadSwagger() {
+    var schema = window.location.search.match(/schema=([^&]+)/);
+    if (schema && schema.length > 1) {
+        schema = decodeURIComponent(schema[1]);
+    } else {
+        return;
+    }
+
     window.swaggerUi = new SwaggerUi({
-        url: url,
+        url: window.xivoApis[schema].href,
         dom_id: "swagger-ui-container",
         onComplete: function(swaggerApi, swaggerUi){
             $('pre code').each(function(i, e) {
