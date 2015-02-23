@@ -1,12 +1,12 @@
 {
     "apis": [
         {
-            "href": "../schemas/dird.json",
+            "href": "/schemas/dird.json",
             "title": "Dird"
         },
         {
-            "href": "../schemas/petstore.json",
-            "title": "Petstore"
+            "href": "/schemas/ctid.json",
+            "title": "CTI"
         }
     ]
 }
