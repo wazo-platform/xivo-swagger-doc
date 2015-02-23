@@ -1,12 +1,12 @@
 {
-    "apis": [
-        {
-            "href": "/schemas/dird.json",
-            "title": "Dird"
+    "apis": {
+        "dird": {
+                "href": "../schemas/dird.json",
+                "title": "Dird"
         },
-        {
-            "href": "/schemas/ctid.json",
+        "ctid": {
+            "href": "../schemas/ctid.json",
             "title": "CTI"
         }
-    ]
+    }
 }
