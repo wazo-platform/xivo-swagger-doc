@@ -1,0 +1,13 @@
+.swagger-section #header {
+    background-color: #FFD8B1;
+}
+
+.swagger-section .swagger-ui-wrap a {
+    color: #AE5700;
+}
+
+#header .header-block {
+    vertical-align: top;
+    padding: 5px;
+    display: inline-block;
+}

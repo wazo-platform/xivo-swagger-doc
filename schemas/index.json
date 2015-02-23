@@ -1,0 +1,12 @@
+{
+    "apis": [
+        {
+            "href": "../schemas/dird.json",
+            "title": "Dird"
+        },
+        {
+            "href": "../schemas/petstore.json",
+            "title": "Petstore"
+        }
+    ]
+}
