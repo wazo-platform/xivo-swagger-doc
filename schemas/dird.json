@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "XiVO Dird",
-        "description": "Phonebook lookup service",
+        "description": "Service for querying directories and finding contacts.\n\nA contact can contain various information such as a person's phone number, number, office number, department, office number, etc. The information displayed is selected via a profile. Directories can be aggregated using multiple data sources such as an LDAP server, a CSV file, another XiVO server, etc.\n\nPlease refer to [the documentation](http://documentation.xivo.io) for further details.",
         "version": "0.1",
         "license": {
             "name": "GPL v3",
@@ -14,7 +14,8 @@
             "email": "dev@avencall.com"
         }
     },
-    "host": "10.42.0.1:9489",
+    "host": "10.42.0.1",
+    "x-xivo-port": 9489,
     "schemes": [
         "http"
     ],
@@ -28,9 +29,12 @@
     "paths": {
         "/directories/lookup/{profile}": {
             "get": {
-                "summary": "Lookup results",
-                "description": "Get a list contact results for directories in profile",
+                "summary": "Search for contacts",
+                "description": "Get a list contacts for directories configured in the profile",
                 "operationId": "get_profile",
+                "tags": [
+                    "lookup"
+                ],
                 "responses": {
                     "200": {
                         "description": "A list of contacts",
@@ -50,14 +54,14 @@
                         "name": "profile",
                         "in": "path",
                         "type": "string",
-                        "description": "The profile identifies the list of contact sources and the display format",
+                        "description": "The profile defines the list of contact sources to query and how the results are displayed",
                         "required": true
                     },
                     {
                         "name": "term",
                         "in": "query",
                         "type": "string",
-                        "description": "The string to look for",
+                        "description": "A search term to look for",
                         "required": true
                     }
                 ]
@@ -66,8 +70,11 @@
         "/directories/lookup/{profile}/headers": {
             "get": {
                 "summary": "Lookup headers",
-                "description": "Headers that should be displayed when displaying results of a lookup",
+                "description": "Column headers that can be used when displaying lookup results to the client",
                 "operationId": "get_headers",
+                "tags": [
+                    "lookup"
+                ],
                 "responses": {
                     "200": {
                         "description": "A list of headers",
@@ -87,7 +94,7 @@
                         "name": "profile",
                         "in": "path",
                         "type": "string",
-                        "description": "The profile identifies the list of contact sources and the display format",
+                        "description": "The profile defines the list of contact sources to query and how the results are displayed",
                         "required": true
                     }
                 ]
@@ -127,14 +134,14 @@
             "properties": {
                 "column_types": {
                     "type": "array",
-                    "description": "The types for the result header",
+                    "description": "Data types for the headers",
                     "items": {
                         "type": "string"
                     }
                 },
                 "column_headers": {
                     "type": "array",
-                    "description": "The labels for the result header",
+                    "description": "Labels for the headers",
                     "items": {
                         "type": "string"
                     }
@@ -148,18 +155,18 @@
                         "type": "string"
                     },
                     "type": "array",
-                    "description": "The types of the result header"
+                    "description": "Data types for each column in the results"
                 },
                 "term": {
                     "type": "string",
-                    "description": "The string to look for"
+                    "description": "Search term used for these results"
                 },
                 "column_headers": {
                     "items": {
                         "type": "string"
                     },
                     "type": "array",
-                    "description": "The labels of the result header"
+                    "description": "Labels for the headers"
                 },
                 "results": {
                     "items": {
@@ -169,7 +176,7 @@
                         "type": "array"
                     },
                     "type": "array",
-                    "description": "The values of the results"
+                    "description": "List of results"
                 }
             }
         }
