@@ -35,13 +35,16 @@ function loadApiList() {
     var host = window.location.search.match(/host=([^&]+)/);
     if (host && host.length > 1) {
         var host = decodeURIComponent(host[1]);
-        $("#host").val(host);
-
-        var url = "http://" + host + "/doc/schemas/index.json";
-        $.getJSON(url, function(data) {
-            buildApiList(host, data);
-        });
+    } else {
+        var host = window.location.host;
     }
+
+    $("#host").val(host);
+
+    var url = "http://" + host + "/doc/schemas/index.json";
+    $.getJSON(url, function(data) {
+        buildApiList(host, data);
+    });
 }
 
 function buildApiList(host, data) {
