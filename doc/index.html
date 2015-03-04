@@ -37,7 +37,7 @@ function loadApiList() {
         var host = decodeURIComponent(host[1]);
         $("#host").val(host);
 
-        var url = "http://" + host + "/doc/index.json";
+        var url = "http://" + host + "/doc/schemas/index.json";
         $.getJSON(url, function(data) {
             buildApiList(host, data);
         });

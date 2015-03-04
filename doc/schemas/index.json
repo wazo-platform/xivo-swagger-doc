@@ -1,5 +1,5 @@
 {
-    "prefix": "/doc",
+    "prefix": "/doc/schemas",
     "apis": {
         "dird": {
                 "schema": "dird.json",
