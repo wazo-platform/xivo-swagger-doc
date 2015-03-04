@@ -1,6 +1,10 @@
 {
     "prefix": "/doc/schemas",
     "apis": {
+        "confd": {
+            "schema": "confd.json",
+            "title": "Confd"
+        },
         "dird": {
                 "schema": "dird.json",
                 "title": "Dird"
