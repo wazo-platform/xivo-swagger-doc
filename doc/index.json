@@ -1,11 +1,12 @@
 {
+    "prefix": "/doc",
     "apis": {
         "dird": {
-                "href": "../schemas/dird.json",
+                "schema": "dird.json",
                 "title": "Dird"
         },
         "ctid": {
-            "href": "../schemas/ctid.json",
+            "schema": "ctid.json",
             "title": "CTI"
         }
     }
