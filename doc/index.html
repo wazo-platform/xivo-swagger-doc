@@ -23,41 +23,25 @@
 
 <script type="text/javascript">
 $(function () {
-    $('#loadhost').submit(function(e) {
-        e.preventDefault();
-        window.location.search = "?host=" + $("#host").val();
-    });
-
-    loadApiList();
+    loadSpecList();
 }); 
 
-function loadApiList() {
-    var host = window.location.search.match(/host=([^&]+)/);
-    if (host && host.length > 1) {
-        var host = decodeURIComponent(host[1]);
-    } else {
-        var host = window.location.host;
-    }
-
-    $("#host").val(host);
-
-    var url = "http://" + host + "/doc/schemas/index.json";
-    $.getJSON(url, function(data) {
-        buildApiList(host, data);
-    });
+function loadSpecList() {
+    var url = "http://" + window.location.host + "/doc/schemas/index.json";
+    $.getJSON(url, buildSpecList);
 }
 
-function buildApiList(host, data) {
+function buildSpecList(data) {
     var title = $("<h1>Available APIs</h1>");
     var list = $("<ul></ul>");
 
     $.each(data.apis, function(api, info) {
-        var url = "http://" + host + data.prefix + "/" + info.schema;
+        var url = "http://" + window.location.host + data.prefix + "/" + info.schema;
         var item = $("<li></li>");
         $("<a></a>")
             .html(info.title)
             .attr('href', url)
-            .click(loadApi)
+            .click(loadSpec)
             .appendTo(item);
         item.appendTo(list);
     });
@@ -65,17 +49,23 @@ function buildApiList(host, data) {
     $("#api-list").append(title).append(list);
 }
 
-function loadApi(e) {
+function loadSpec(e) {
     e.preventDefault();
-    loadSwagger($(this).attr('href'));
+    var url = $(this).attr('href');
+    $.getJSON(url, function(spec) {
+        loadSwagger(spec);
+    });
 }
 
-function loadSwagger(url) {
+function loadSwagger(spec) {
     var container = "swagger-ui-container";
     $(container).empty();
 
+    spec.host = window.location.host + ":" + spec["x-xivo-port"];
+    log(spec.host)
+
     window.swaggerUi = new SwaggerUi({
-        url: url,
+        spec: spec,
         dom_id: container,
         onComplete: function(swaggerApi, swaggerUi){
             $('pre code').each(function(i, e) {
@@ -100,13 +90,7 @@ function loadSwagger(url) {
         <div class="swagger-ui-wrap">
             <img class="logo" src="images/xivo.png" />
             <div class="header-block">
-                <p>Enter the IP address of a XiVO server :</p>
-                <div class="input">
-                    <form id="loadhost" action="#">
-                        <input name="host", id="host" type="text" />
-                        <input value="Load" type="submit" />
-                    </form>
-                </div>
+                <p>Select one of the APIs below</p>
             </div>
         </div>
     </div>

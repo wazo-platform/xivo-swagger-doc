@@ -14,7 +14,6 @@
             "email": "dev@avencall.com"
         }
     },
-    "host": "10.42.0.1:9489",
     "x-xivo-port": 9489,
     "schemes": [
         "http"
