@@ -1,0 +1,5 @@
+xivo-swagger-doc (1.0) xivo-dev; urgency=low
+
+  * Initial packaging
+
+ -- Gregory Eric Sanderson <gsanderson@avencall.com>  Thu, 05 Mar 2015 12:00:00 -0500
