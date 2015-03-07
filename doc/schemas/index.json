@@ -12,6 +12,10 @@
         "ctid": {
             "schema": "ctid.json",
             "title": "CTI"
+        },
+        "agentd": {
+            "schema": "agentd.json",
+            "title": "Agents"
         }
     }
 }
