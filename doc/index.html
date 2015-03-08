@@ -61,7 +61,7 @@ function loadSwagger(spec) {
     var container = "swagger-ui-container";
     $(container).empty();
 
-    spec.host = window.location.host + ":" + spec["x-xivo-port"];
+    spec.host = window.location.hostname + ":" + spec["x-xivo-port"];
     log(spec.host)
 
     window.swaggerUi = new SwaggerUi({
