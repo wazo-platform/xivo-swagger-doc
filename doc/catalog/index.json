@@ -1,0 +1,19 @@
+{
+    "apis": {
+        "dird": {
+            "title": "Dird",
+            "port": 8000,
+            "path": "/doc/catalog/dird.json"
+        },
+        "ctid": {
+            "title": "CTI",
+            "port": 8000,
+            "path": "/doc/catalog/ctid.json"
+        },
+        "agentd": {
+            "title": "Agents",
+            "port": 8000,
+            "path": "/doc/catalog/agentd.json"
+        }
+    }
+}

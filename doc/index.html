@@ -24,30 +24,44 @@
 <script type="text/javascript">
 $(function () {
     $('#loadspec').submit(loadSpecFromForm);
-    loadSpecList();
+    loadCatalog();
 }); 
 
-function loadSpecList() {
-    var url = "http://" + window.location.host + "/doc/schemas/index.json";
-    $.getJSON(url, buildSpecList);
+function loadCatalog() {
+    var catalog = window.location.search.match(/catalog=([^&]+)/);
+    if (catalog && catalog.length > 1) {
+        catalog = decodeURIComponent(catalog[1])
+    } else {
+        catalog = "http://" + window.location.host + "/doc/catalog/index.json"
+    }
+    $.getJSON(catalog, buildCatalog);
 }
 
-function buildSpecList(data) {
+function buildCatalog(data) {
     var title = $("<h1>Available APIs</h1>");
     var list = $("<ul></ul>");
 
     $.each(data.apis, function(api, info) {
-        log(info)
+        var url = buildSpecUrl(info);
         var item = $("<li></li>");
         $("<a></a>")
             .html(info.title)
-            .attr('href', info.url)
+            .attr('href', url)
             .click(loadSpecFromLink)
             .appendTo(item);
         item.appendTo(list);
     });
 
     $("#api-list").append(title).append(list);
+}
+
+function buildSpecUrl(info) {
+    if (info.url) {
+        return info.url;
+    } else if (info.port && info.path) {
+        return "http://" + window.location.hostname + ":" + info.port + info.path;
+    }
+    return null;
 }
 
 function loadSpecFromLink(e) {
