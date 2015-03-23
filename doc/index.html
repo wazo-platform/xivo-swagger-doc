@@ -23,6 +23,7 @@
 
 <script type="text/javascript">
 $(function () {
+    $('#loadspec').submit(loadSpecFromForm);
     loadSpecList();
 }); 
 
@@ -36,12 +37,12 @@ function buildSpecList(data) {
     var list = $("<ul></ul>");
 
     $.each(data.apis, function(api, info) {
-        var url = "http://" + window.location.host + data.prefix + "/" + info.schema;
+        log(info)
         var item = $("<li></li>");
         $("<a></a>")
             .html(info.title)
-            .attr('href', url)
-            .click(loadSpec)
+            .attr('href', info.url)
+            .click(loadSpecFromLink)
             .appendTo(item);
         item.appendTo(list);
     });
@@ -49,23 +50,26 @@ function buildSpecList(data) {
     $("#api-list").append(title).append(list);
 }
 
-function loadSpec(e) {
+function loadSpecFromLink(e) {
     e.preventDefault();
     var url = $(this).attr('href');
-    $.getJSON(url, function(spec) {
-        loadSwagger(spec);
-    });
+    loadSwagger(url);
 }
 
-function loadSwagger(spec) {
+function loadSpecFromForm(e) {
+    e.preventDefault();
+    var url = $('#specurl').val();
+    loadSwagger(url);
+}
+
+function loadSwagger(url) {
+    $('#specurl').val(url);
+
     var container = "swagger-ui-container";
     $(container).empty();
 
-    spec.host = window.location.hostname + ":" + spec["x-xivo-port"];
-    log(spec.host)
-
     window.swaggerUi = new SwaggerUi({
-        spec: spec,
+        url: url,
         dom_id: container,
         onComplete: function(swaggerApi, swaggerUi){
             $('pre code').each(function(i, e) {
@@ -90,11 +94,17 @@ function loadSwagger(spec) {
         <div class="swagger-ui-wrap">
             <img class="logo" src="images/xivo.png" />
             <div class="header-block">
-                <p>Select one of the APIs below</p>
+                <p>Select one of the APIs below, or enter the URL of a spec</p>
+                <div class="input">
+                    <form id="loadspec" action="#">
+                        <input id="specurl" name="specurl" type="text" />
+                        <input value="Load" type="submit" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div id="api-list" class="swagger-ui-wrap">
+    <div id="api-list" class="navcol">
     </div>
     <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
     <div id="swagger-ui-container" class="swagger-ui-wrap"></div>

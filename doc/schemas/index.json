@@ -1,21 +1,16 @@
 {
-    "prefix": "/doc/schemas",
     "apis": {
-        "confd": {
-            "schema": "confd.json",
-            "title": "Confd"
-        },
         "dird": {
-                "schema": "dird.json",
-                "title": "Dird"
+            "title": "Dird",
+            "url": "http://dev:9849/0.1/doc/agentd.json"
         },
         "ctid": {
-            "schema": "ctid.json",
-            "title": "CTI"
+            "title": "CTI",
+            "url": "http://dev:9495/0.1/doc/ctid.json"
         },
         "agentd": {
-            "schema": "agentd.json",
-            "title": "Agents"
+            "title": "Agents",
+            "url": "http://dev:9493/1.0/doc/agentd.json"
         }
     }
 }
