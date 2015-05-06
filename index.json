@@ -1,0 +1,19 @@
+{
+    "apis": [
+        {
+            "path": "/1.0/doc/api.json",
+            "port": 9493,
+            "title": "XiVO Agentd"
+        },
+        {
+            "path": "/0.1/doc/api.json",
+            "port": 9495,
+            "title": "XiVO CTId"
+        },
+        {
+            "path": "/0.1/doc/api.json",
+            "port": 9489,
+            "title": "XiVO Dird"
+        }
+    ]
+}
