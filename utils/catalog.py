@@ -13,7 +13,7 @@ class SpecScanner(object):
         self.root = root
 
     def scan(self):
-        for path, dirs, files in os.walk(self.root):
+        for path, dirs, files in os.walk(self.root, followlinks=True):
             json_files = fnmatch.filter(files, '*.json')
             for filepath, spec in self.filter_specs(path, json_files):
                 yield filepath, spec
