@@ -2,14 +2,16 @@ BUILD=_build
 CATALOG=index.json
 CATALOG_DEST=${BUILD}/doc/catalog
 PROJECTS=$(shell echo $HOME/xivo)
+PREFIX=usr/share/xivo-swagger-doc
 
 all: clean build_server
 
 clean:
-	rm -r ${BUILD}
+	rm -rf ${BUILD}
 
 install: 
-	cp -r ${BUILD}/* ${PREFIX}
+	mkdir -p ${DESTDIR}/${PREFIX}
+	cp -r ${BUILD}/* ${DESTDIR}/${PREFIX}
 
 build_server: build_web
 	cp ${CATALOG} ${CATALOG_DEST}
