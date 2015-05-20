@@ -1,6 +1,6 @@
 BUILD=_build
 CATALOG=index.json
-CATALOG_DEST=${BUILD}/doc/catalog
+CATALOG_DEST=${BUILD}/catalog
 PROJECTS=$(shell echo $HOME/xivo)
 DESTDIR=.
 DEFAULTDIR=usr/share/xivo-swagger-doc
@@ -23,11 +23,11 @@ build_server: build_web
 
 build_static: build_web
 	mkdir -p ${CATALOG_DEST}
-	python utils/catalog.py static ${PROJECTS} ${CATALOG_DEST}
+	python utils/catalog.py static --prefix /catalog ${PROJECTS} ${CATALOG_DEST}
 
 build_web:
 	mkdir -p ${BUILD}
-	cp -r web ${BUILD}/doc
+	cp -r web/* ${BUILD}
 
 update_catalog:
 	python utils/catalog.py server ${PROJECTS} .
