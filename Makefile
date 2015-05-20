@@ -19,6 +19,7 @@ install_static: build_static
 	cp -r ${BUILD}/* ${DESTDIR}
 
 build_server: build_web
+	mkdir -p ${CATALOG_DEST}
 	cp ${CATALOG} ${CATALOG_DEST}
 
 build_static: build_web
