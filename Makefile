@@ -10,7 +10,7 @@ all: clean build_server
 clean:
 	rm -rf ${BUILD}
 
-install: 
+install:
 	mkdir -p ${DESTDIR}/${DEFAULTDIR}
 	cp -r ${BUILD}/* ${DESTDIR}/${DEFAULTDIR}
 
@@ -25,7 +25,7 @@ build_static: build_web
 	mkdir -p ${CATALOG_DEST}
 	python utils/catalog.py static ${PROJECTS} ${CATALOG_DEST}
 
-build_web: 
+build_web:
 	mkdir -p ${BUILD}
 	cp -r web ${BUILD}/doc
 

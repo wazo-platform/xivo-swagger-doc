@@ -10,7 +10,7 @@ RUN apt-get -qq -y install git python-pip
 WORKDIR /root
 RUN git clone --depth 1 "git://github.com/xivo-pbx/xivo-swagger-doc"
 
-#Clone all projects containing a swagger API. 
+#Clone all projects containing a swagger API.
 #List of projects is in xivo-swagger-doc/contrib/repos
 RUN mkdir /root/projects
 WORKDIR /root/projects
