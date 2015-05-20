@@ -14,7 +14,7 @@ RUN git clone --depth 1 "git://github.com/xivo-pbx/xivo-swagger-doc"
 #List of projects is in xivo-swagger-doc/contrib/repos
 RUN mkdir /root/projects
 WORKDIR /root/projects
-RUN for url in $(cat /root/xivo-swagger-doc/contrib/repos); do git clone --depth 1 $url; done
+RUN for url in $(cat /root/xivo-swagger-doc/contribs/repos); do git clone --depth 1 $url ; done
 
 #Build static version of documentation and install it
 WORKDIR /root/xivo-swagger-doc
