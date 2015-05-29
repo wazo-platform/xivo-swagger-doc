@@ -33,7 +33,9 @@ class SpecScanner(object):
                 return None
 
     def is_swagger_spec(self, spec):
-        return spec.get('swagger') >= "2.0"
+        if 'swagger' not in spec:
+            return False
+        return str(spec['swagger']) >= "2"
 
 
 class CatalogBuilder(object):
