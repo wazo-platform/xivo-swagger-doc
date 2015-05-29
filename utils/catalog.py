@@ -13,7 +13,7 @@ class SpecScanner(object):
         self.root = root
 
     def scan(self):
-        for path, dirs, files in os.walk(self.root):
+        for path, dirs, files in os.walk(self.root, followlinks=True):
             json_files = fnmatch.filter(files, '*.json')
             for filepath, spec in self.filter_specs(path, json_files):
                 yield filepath, spec
@@ -49,22 +49,26 @@ class CatalogBuilder(object):
     def build(self, scanner):
         pass
 
-    def write_index(self, catalog):
+    def write_index(self, items):
+        items = self.sort_items(items)
+        catalog = {'apis': items}
         index_path = os.path.join(self.destination, self.index_filename)
         data = json.dumps(catalog, indent=4, separators=(',', ': '))
         with open(index_path, 'w') as f:
             f.write(data)
 
+    def sort_items(self, items):
+        return sorted(items, key=lambda i: i['title'].lower())
+
 
 class ServerBuilder(CatalogBuilder):
 
     def build(self, scanner):
-        catalog = self.build_catalog(scanner)
-        self.write_index(catalog)
+        items = self.build_items(scanner)
+        self.write_index(items)
 
-    def build_catalog(self, scanner):
-        items = [self.build_item(spec) for _, spec in scanner.scan()]
-        return {'apis': items}
+    def build_items(self, scanner):
+        return [self.build_item(spec) for _, spec in scanner.scan()]
 
     def build_item(self, spec):
         return {'title': spec['info']['title'],
@@ -84,8 +88,7 @@ class StaticBuilder(CatalogBuilder):
             items.append(self.build_item(spec))
             self.copy_spec(spec, filepath)
 
-        catalog = {'apis': items}
-        self.write_index(catalog)
+        self.write_index(items)
 
     def build_item(self, spec):
         url = "{}/{}.json".format(self.prefix, spec['x-xivo-name'])
@@ -101,7 +104,7 @@ class StaticBuilder(CatalogBuilder):
 @click.command('server')
 @click.argument('projects', type=click.Path(exists=True, file_okay=False))
 @click.argument('destination', type=click.Path(exists=True, file_okay=False))
-def build_server(projects, destination):
+def server(projects, destination):
     scanner = SpecScanner(projects)
     builder = ServerBuilder(destination)
     builder.build(scanner)
@@ -111,7 +114,7 @@ def build_server(projects, destination):
 @click.argument('projects', type=click.Path(exists=True, file_okay=False))
 @click.argument('destination', type=click.Path(exists=True, file_okay=False))
 @click.option('--prefix', help="URL prefix", default="/doc/catalog")
-def build_static(projects, destination, prefix):
+def static(projects, destination, prefix):
     scanner = SpecScanner(projects)
     builder = StaticBuilder(destination, prefix=prefix)
     builder.build(scanner)
@@ -119,6 +122,6 @@ def build_static(projects, destination, prefix):
 
 if __name__ == "__main__":
     group = click.Group()
-    group.add_command(build_server)
-    group.add_command(build_static)
+    group.add_command(server)
+    group.add_command(static)
     group()

@@ -1,0 +1,3 @@
+location ^~ /api {
+    rewrite ^(.*) http://$host$1 last;
+}

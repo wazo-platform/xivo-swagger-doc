@@ -13,3 +13,37 @@ directory in a HTTP server. If you have python installed, you can run:
     python -m SimpleHTTPServer
 
 Then open your browser at ```http://localhost:8000/doc```
+
+
+Docker
+======
+
+The Dockerfile creates an image with xivo-swagger-doc ready to be accessed on
+port 80:
+
+    docker build -t xivo/swagger .
+    docker run -p 8000:80 xivo/swagger
+
+Go to http://localhost:8000
+
+
+utils/catalog.py
+================
+
+xivo-swagger-doc may be generated in two ways:
+
+* the whole documentation is statically bundled
+* generate only one page that redirects towards each service API spec dynamically.
+
+
+static
+------
+
+    make build_static
+    make install_static
+
+dynamic
+------
+
+    make
+    make install
