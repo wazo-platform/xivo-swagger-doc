@@ -1,3 +1,3 @@
 location ^~ /doc {
-    alias /usr/share/xivo-swagger-doc/;
+    rewrite ^(.*) http://$host$1 last;
 }
