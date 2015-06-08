@@ -1,13 +1,9 @@
 Format: http://dep.debian.net/deps/dep5
-Upstream-Name: xivo-dird
-Source: git://git.xivo.io/official/xivo-dird.git
+Upstream-Name: xivo-swagger-doc
+Source: http://github.com/xivo-pbx/xivo-swagger-doc
 
 Files: *
-Copyright: 2012 Avencall
-License: GPL-3.0+
-
-Files: debian/*
-Copyright: 2012 Nicolas HICHER (atarakt) <nhicher@proformatique.com>
+Copyright: 2015 Avencall
 License: GPL-3.0+
 
 License: GPL-3.0+
