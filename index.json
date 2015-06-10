@@ -7,6 +7,11 @@
         },
         {
             "path": "/0.1/api/api.json",
+            "port": 9497,
+            "title": "XiVO Auth"
+        },
+        {
+            "path": "/0.1/api/api.json",
             "port": 9495,
             "title": "XiVO CTId"
         },
