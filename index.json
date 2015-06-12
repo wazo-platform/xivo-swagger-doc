@@ -16,6 +16,11 @@
             "title": "XiVO CTId"
         },
         {
+            "path": "/1.1/api/api.json",
+            "port": 9486,
+            "title": "XiVO Confd"
+        },
+        {
             "path": "/0.1/api/api.json",
             "port": 9489,
             "title": "XiVO Dird"
