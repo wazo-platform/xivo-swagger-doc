@@ -73,6 +73,8 @@ function loadSpecFromLink(e) {
 function loadSpecFromForm(e) {
     e.preventDefault();
     var url = $('#specurl').val();
+    $('#input_user').change(addAuthorization);
+    $('#input_password').change(addAuthorization);
     loadSwagger(url);
 }
 
@@ -89,6 +91,7 @@ function loadSwagger(url) {
             $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e)
             });
+            addAuthorization();
         },
         onFailure: function(data) {
             log("Unable to Load SwaggerUI");
@@ -98,6 +101,12 @@ function loadSwagger(url) {
         validatorUrl: null
     });
     window.swaggerUi.load();
+}
+
+function addAuthorization() {
+    var auth = "Basic " + btoa($('#input_user')[0].value + ":" + $('#input_pass')[0].value);
+    authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
+    window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
 }
 
 </script>
@@ -115,6 +124,12 @@ function loadSwagger(url) {
                         <input id="specurl" name="specurl" type="text" />
                         <input value="Load" type="submit" />
                     </form>
+                </div>
+                <div class='input'>
+                  <input placeholder="username" id="input_user" name="user" type="text" size="10"/>
+                </div>	
+                <div class='input'>
+                  <input placeholder="password" id="input_pass" name="pass" type="password" size="10"/>
                 </div>
             </div>
         </div>
