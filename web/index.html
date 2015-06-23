@@ -23,7 +23,7 @@
 
 <script type="text/javascript">
 $(function () {
-    $('#loadspec').submit(loadSpecFromForm);
+    $('#explore').click(loadSpecFromForm);
     loadCatalog();
 }); 
 
@@ -52,7 +52,10 @@ function buildCatalog(data) {
         item.appendTo(list);
     });
 
-    $("#api-list").append(title).append(list);
+    if (list instanceof Object) {
+        $("#api-list").show();
+        $("#api-list").append(title).append(list);
+    }
 }
 
 function buildSpecUrl(info) {
@@ -72,14 +75,13 @@ function loadSpecFromLink(e) {
 
 function loadSpecFromForm(e) {
     e.preventDefault();
-    var url = $('#specurl').val();
-    $('#input_user').change(addAuthorization);
-    $('#input_password').change(addAuthorization);
+    var url = $('#input_baseUrl').val();
+    $('#input_apiKey').change(addAuthorization);
     loadSwagger(url);
 }
 
 function loadSwagger(url) {
-    $('#specurl').val(url);
+    $('#input_baseUrl').val(url);
 
     var container = "swagger-ui-container";
     $(container).empty();
@@ -97,16 +99,22 @@ function loadSwagger(url) {
             log("Unable to Load SwaggerUI");
         },
         docExpansion: "none",
-        sorter : "alpha",
+        apiSorter : "alpha",
         validatorUrl: null
     });
     window.swaggerUi.load();
 }
 
 function addAuthorization() {
-    var auth = "Basic " + btoa($('#input_user')[0].value + ":" + $('#input_pass')[0].value);
-    authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
-    window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
+    api_key = $('#input_apiKey').val().split(":", 2);
+    if (api_key[1] != undefined) {
+        var auth = "Basic " + btoa(api_key[0] + ":" + api_key[1]);
+        authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
+        window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
+    } else {
+        authorization = new SwaggerClient.ApiKeyAuthorization("X-AUTH-TOKEN", api_key[0], "header");
+        window.swaggerUi.api.clientAuthorizations.add("token", authorization);
+    }
 }
 
 </script>
@@ -114,27 +122,21 @@ function addAuthorization() {
 </head>
 
 <body class="swagger-section">
-    <div id="header">
+    <div id='header'>
         <div class="swagger-ui-wrap">
-            <img class="logo" src="images/xivo.png" />
-            <div class="header-block">
-                <p>Select one of the APIs below, or enter the URL of a spec</p>
-                <div class="input">
-                    <form id="loadspec" action="#">
-                        <input id="specurl" name="specurl" type="text" />
-                        <input value="Load" type="submit" />
-                    </form>
-                </div>
-                <div class='input'>
-                  <input placeholder="username" id="input_user" name="user" type="text" size="10"/>
-                </div>	
-                <div class='input'>
-                  <input placeholder="password" id="input_pass" name="pass" type="password" size="10"/>
-                </div>
+            <a id="logo" href="http://swagger.io">XiVO</a>
+            <form id='api_selector'>
+            <div class='input'>
+                <input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/>
             </div>
+            <div class='input'>
+                <input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/>
+            </div>
+            <div class='input'><a id="explore" href="#">Explore</a></div>
+            </form>
         </div>
     </div>
-    <div id="api-list" class="navcol">
+    <div id="api-list" class="navcol" style="display:none">
     </div>
     <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
     <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
