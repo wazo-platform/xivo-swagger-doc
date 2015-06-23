@@ -25,7 +25,7 @@
 $(function () {
     $('#loadspec').submit(loadSpecFromForm);
     loadCatalog();
-}); 
+});
 
 function loadCatalog() {
     var catalog = window.location.search.match(/catalog=([^&]+)/);
@@ -58,8 +58,8 @@ function buildCatalog(data) {
 function buildSpecUrl(info) {
     if (info.url) {
         return info.url;
-    } else if (info.port && info.path) {
-        return "http://" + window.location.hostname + ":" + info.port + info.path;
+    } else if (info.port && info.path && info.scheme) {
+        return info.scheme + "://" + window.location.hostname + ":" + info.port + info.path;
     }
     return null;
 }
