@@ -112,7 +112,7 @@ function addAuthorization() {
         authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
         window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
     } else {
-        authorization = new SwaggerClient.ApiKeyAuthorization("X-AUTH-TOKEN", api_key[0], "header");
+        authorization = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", api_key[0], "header");
         window.swaggerUi.api.clientAuthorizations.add("token", authorization);
     }
 }
