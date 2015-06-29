@@ -112,6 +112,9 @@ function addAuthorization() {
         authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
         window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
     } else {
+        $("input[name*='X-Auth-Token']").each( function( index) {
+            $(this).val(api_key[0]);
+        });
         authorization = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", api_key[0], "header");
         window.swaggerUi.api.clientAuthorizations.add("token", authorization);
     }
