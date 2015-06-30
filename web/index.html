@@ -106,17 +106,18 @@ function loadSwagger(url) {
 }
 
 function addAuthorization() {
-    api_key = $('#input_apiKey').val().split(":", 2);
-    if (api_key[1] != undefined) {
-        var auth = "Basic " + btoa(api_key[0] + ":" + api_key[1]);
+    var apikey = $.trim($('#input_apiKey').val());
+    var parts = apikey.split(":", 2);
+    if(parts.length > 1) {
+        var auth = "Basic " + btoa(apikey);
         authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
-        window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
-    } else {
-        $("input[name*='X-Auth-Token']").each( function( index) {
-            $(this).val(api_key[0]);
+        window.swaggerUi.api.clientAuthorizations.add("authorization", authorization);
+    } else if (apikey != "") {
+        $("input[name*='X-Auth-Token']").each(function(index) {
+            $(this).val(apikey);
         });
-        authorization = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", api_key[0], "header");
-        window.swaggerUi.api.clientAuthorizations.add("token", authorization);
+        authorization = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", apikey, "header");
+        window.swaggerUi.api.clientAuthorizations.add("authorization", authorization);
     }
 }
 
