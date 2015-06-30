@@ -3,12 +3,28 @@ body {
     height: 100%;
 }
 
-.swagger-section #header {
-    background-color: #FFD8B1;
+a,
+.swagger-section .swagger-ui-wrap a 
+{
+    color: #e77d39;
 }
 
-.swagger-section .swagger-ui-wrap a {
-    color: #AE5700;
+a:visited,
+.swagger-section .swagger-ui-wrap a:visited
+{
+    color: #ac5721;
+}
+
+.swagger-section #header a#logo {
+    color: #e77d39;
+}
+
+.swagger-section #header form#api_selector .input a#explore {
+    background-color: #e77d39;
+}
+
+.swagger-section #header {
+    background-color: #2c2927;
 }
 
 #header .header-block {
