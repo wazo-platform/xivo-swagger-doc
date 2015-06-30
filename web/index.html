@@ -32,7 +32,8 @@ function loadCatalog() {
     if (catalog && catalog.length > 1) {
         catalog = decodeURIComponent(catalog[1])
     } else {
-        catalog = window.location + "/catalog/index.json"
+        var path = window.location.pathname.replace(/\/$/, '');
+        catalog = path + "/catalog/index.json";
     }
     $.getJSON(catalog, buildCatalog);
 }
