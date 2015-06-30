@@ -41,18 +41,18 @@ function buildCatalog(data) {
     var title = $("<h1>Available APIs</h1>");
     var list = $("<ul></ul>");
 
-    $.each(data.apis, function(api, info) {
-        var url = buildSpecUrl(info);
-        var item = $("<li></li>");
-        $("<a></a>")
-            .html(info.title)
-            .attr('href', url)
-            .click(loadSpecFromLink)
-            .appendTo(item);
-        item.appendTo(list);
-    });
+    if (data.apis.length > 0) {
+        $.each(data.apis, function(api, info) {
+            var url = buildSpecUrl(info);
+            var item = $("<li></li>");
+            $("<a></a>")
+                .html(info.title)
+                .attr('href', url)
+                .click(loadSpecFromLink)
+                .appendTo(item);
+            item.appendTo(list);
+        });
 
-    if (list instanceof Object) {
         $("#api-list").show();
         $("#api-list").append(title).append(list);
     }
