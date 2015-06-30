@@ -1,38 +1,36 @@
 BUILD=_build
-CATALOG=catalog
-CATALOG_INDEX=index.json
+CATALOG=index.json
+CATALOG_DEST=${BUILD}/catalog
 PROJECTS=$(shell echo $HOME/xivo)
-
 DESTDIR=.
-INSTALLDIR=usr/share/xivo-swagger-doc
+DEFAULTDIR=usr/share/xivo-swagger-doc
 
 all: clean build_server
 
 clean:
 	rm -rf ${BUILD}
 
-install: build_server
-	mkdir -p ${DESTDIR}/${INSTALLDIR}
-	cp -r ${BUILD}/* ${DESTDIR}/${INSTALLDIR}
-
-build_server: build_web ${CATALOG_INDEX}
-	cp ${CATALOG_INDEX} ${BUILD}/${CATALOG}
+install:
+	mkdir -p ${DESTDIR}/${DEFAULTDIR}
+	cp -r ${BUILD}/* ${DESTDIR}/${DEFAULTDIR}
 
 install_static: build_static
 	mkdir -p ${DESTDIR}
 	cp -r ${BUILD}/* ${DESTDIR}
 
-build_static: build_web ${CATALOG}
-	utils/catalog build_static ${CATALOG} --destination ${BUILD}/${CATALOG}
+build_server: build_web
+	mkdir -p ${CATALOG_DEST}
+	cp ${CATALOG} ${CATALOG_DEST}
+
+build_static: build_web
+	mkdir -p ${CATALOG_DEST}
+	python utils/catalog.py static --prefix /catalog ${PROJECTS} ${CATALOG_DEST}
 
 build_web:
 	mkdir -p ${BUILD}
 	cp -r web/* ${BUILD}
 
-${CATALOG}:
-	utils/catalog download --destination ${CATALOG}
+update_catalog:
+	python utils/catalog.py server ${PROJECTS} .
 
-${CATALOG_INDEX}:
-	utils/catalog build_server ${PROJECTS} --destination .
-
-.PHONY: clean install install_static build_server build_static build_web
+.PHONY: clean install build_server build_static build_web update_catalog

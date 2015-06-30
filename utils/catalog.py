@@ -5,11 +5,6 @@ import shutil
 import json
 import fnmatch
 import click
-import requests
-import uuid
-
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-DEFAULT_REPOS = os.path.join(ROOT_DIR, 'contribs', 'repos')
 
 
 class SpecScanner(object):
@@ -108,60 +103,27 @@ class StaticBuilder(CatalogBuilder):
         shutil.copy(filepath, destination)
 
 
-@click.command()
-@click.argument('specs', type=click.Path(exists=True, file_okay=False))
-@click.option('--destination', default='catalog', type=click.Path(file_okay=False))
-def build_server(specs, destination):
-    if not os.path.exists(destination):
-        os.makedirs(destination)
-    scanner = SpecScanner(specs)
+@click.command('server')
+@click.argument('projects', type=click.Path(exists=True, file_okay=False))
+@click.argument('destination', type=click.Path(exists=True, file_okay=False))
+def server(projects, destination):
+    scanner = SpecScanner(projects)
     builder = ServerBuilder(destination)
     builder.build(scanner)
 
 
-@click.command()
-@click.argument('specs', type=click.Path(exists=True, file_okay=False))
-@click.option('--destination', default='catalog', type=click.Path(file_okay=False))
-@click.option('--prefix', default="/catalog")
-def build_static(specs, destination, prefix):
-    if not os.path.exists(destination):
-        os.makedirs(destination)
-    scanner = SpecScanner(specs)
+@click.command('static')
+@click.argument('projects', type=click.Path(exists=True, file_okay=False))
+@click.argument('destination', type=click.Path(exists=True, file_okay=False))
+@click.option('--prefix', help="URL prefix", default="/doc/catalog")
+def static(projects, destination, prefix):
+    scanner = SpecScanner(projects)
     builder = StaticBuilder(destination, prefix=prefix)
     builder.build(scanner)
 
 
-@click.command()
-@click.option('--repos', type=click.Path(exists=True), default=DEFAULT_REPOS)
-@click.option('--branch', default='master')
-@click.option('--destination', default='catalog', type=click.Path())
-def download(repos, branch, destination):
-    if not os.path.exists(destination):
-        os.makedirs(destination)
-
-    with open(repos) as f:
-        urls = [l.strip().format(branch=branch) for l in f]
-
-    for url in urls:
-        download_spec(url, destination)
-
-
-def download_spec(url, destination):
-    filepath = os.path.join(destination, str(uuid.uuid4()) + ".json")
-
-    print "downloading {}".format(url)
-    response = requests.get(url, stream=True)
-    if response.status_code == 200:
-        with open(filepath, 'wb') as f:
-            for chunk in response.iter_content(1024):
-                f.write(chunk)
-    else:
-        raise Exception("could not download {}: error {}".format(url, response.status_code))
-
-
 if __name__ == "__main__":
     group = click.Group()
-    group.add_command(build_server)
-    group.add_command(build_static)
-    group.add_command(download)
+    group.add_command(server)
+    group.add_command(static)
     group()
