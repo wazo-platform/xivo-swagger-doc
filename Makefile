@@ -10,12 +10,14 @@ all: clean build_server
 
 clean:
 	rm -rf ${BUILD}
+	rm -rf ${CATALOG}
 
 install: build_server
 	mkdir -p ${DESTDIR}/${INSTALLDIR}
 	cp -r ${BUILD}/* ${DESTDIR}/${INSTALLDIR}
 
 build_server: build_web ${CATALOG_INDEX}
+	mkdir -p ${BUILD}/${CATALOG}
 	cp ${CATALOG_INDEX} ${BUILD}/${CATALOG}
 
 install_static: build_static
