@@ -8,6 +8,12 @@
         },
         {
             "scheme": "https",
+            "path": "/1.0/api/api.json",
+            "port": 9491,
+            "title": "XiVO AMId"
+        },
+        {
+            "scheme": "https",
             "path": "/0.1/api/api.json",
             "port": 9497,
             "title": "XiVO Auth"
