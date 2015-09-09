@@ -47,3 +47,15 @@ dynamic
 
     make
     make install
+
+
+Add a new API
+=============
+
+When adding a new Swagger spec, you need to:
+
+- edit index.json
+- edit contribs/repos
+- add the following keys to your Swagger spec:
+  - x-xivo-name (string, ex: "amid")
+  - x-xivo-port (int, ex: 9491)
