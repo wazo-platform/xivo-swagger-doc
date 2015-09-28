@@ -59,3 +59,13 @@ When adding a new Swagger spec, you need to:
 - add the following keys to your Swagger spec:
   - x-xivo-name (string, ex: "amid")
   - x-xivo-port (int, ex: 9491)
+
+
+Updating SwaggerUI
+==================
+
+You need to change:
+
+web/index.html
+web/css/xivo.css
+web/images/logo_small.png
