@@ -26,7 +26,7 @@
         },
         {
             "scheme": "https",
-            "path": "/0.1/api/api.json",
+            "path": "/1.0/api/api.json",
             "port": 9500,
             "title": "XiVO CTId ng"
         },
