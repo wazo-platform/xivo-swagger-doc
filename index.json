@@ -26,6 +26,12 @@
         },
         {
             "scheme": "https",
+            "path": "/0.1/api/api.json",
+            "port": 9500,
+            "title": "XiVO CTId ng"
+        },
+        {
+            "scheme": "https",
             "path": "/1.1/api/api.json",
             "port": 9486,
             "title": "XiVO Confd"
