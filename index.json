@@ -1,7 +1,7 @@
 {
     "apis": [
         {
-            "scheme": "http",
+            "scheme": "https",
             "path": "/1.0/api/api.json",
             "port": 9493,
             "title": "XiVO Agentd"
