@@ -1,6 +1,7 @@
 https://raw.githubusercontent.com/xivo-pbx/xivo-agentd/{branch}/xivo_agent/swagger/api.json
 https://raw.githubusercontent.com/xivo-pbx/xivo-amid/{branch}/xivo_ami/resources/api/api.json
 https://raw.githubusercontent.com/xivo-pbx/xivo-ctid/{branch}/xivo_cti/swagger/api.json
+https://raw.githubusercontent.com/xivo-pbx/xivo-ctid-ng/{branch}/xivo_ctid_ng/plugins/api/api.json
 https://raw.githubusercontent.com/xivo-pbx/xivo-dird/{branch}/xivo_dird/swagger/api.json
 https://raw.githubusercontent.com/xivo-pbx/xivo-auth/{branch}/xivo_auth/swagger/api.json
 https://raw.githubusercontent.com/xivo-pbx/xivo-confd/{branch}/xivo_confd/resources/api/api.json
