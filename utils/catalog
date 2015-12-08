@@ -68,21 +68,6 @@ class CatalogBuilder(object):
         return sorted(items, key=lambda i: i['title'].lower())
 
 
-class ServerBuilder(CatalogBuilder):
-
-    def build(self, scanner):
-        items = self.build_items(scanner)
-        self.write_index(items)
-
-    def build_items(self, scanner):
-        return [self.build_item(spec) for _, spec in scanner.scan()]
-
-    def build_item(self, spec):
-        return {'title': spec['info']['title'],
-                'port': spec['x-xivo-port'],
-                'path': '{}/doc/api.json'.format(spec['basePath'])}
-
-
 class StaticBuilder(CatalogBuilder):
 
     def __init__(self, destination, prefix="/doc/catalog"):
@@ -106,17 +91,6 @@ class StaticBuilder(CatalogBuilder):
         filename = "{}.json".format(spec['x-xivo-name'])
         destination = os.path.join(self.destination, filename)
         shutil.copy(filepath, destination)
-
-
-@click.command()
-@click.argument('specs', type=click.Path(exists=True, file_okay=False))
-@click.option('--destination', default='catalog', type=click.Path(file_okay=False))
-def build_server(specs, destination):
-    if not os.path.exists(destination):
-        os.makedirs(destination)
-    scanner = SpecScanner(specs)
-    builder = ServerBuilder(destination)
-    builder.build(scanner)
 
 
 @click.command()
@@ -161,7 +135,6 @@ def download_spec(url, destination):
 
 if __name__ == "__main__":
     group = click.Group()
-    group.add_command(build_server)
     group.add_command(build_static)
     group.add_command(download)
     group()

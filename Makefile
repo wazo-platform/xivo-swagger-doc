@@ -16,7 +16,7 @@ install: build_server
 	mkdir -p ${DESTDIR}/${INSTALLDIR}
 	cp -r ${BUILD}/* ${DESTDIR}/${INSTALLDIR}
 
-build_server: build_web ${CATALOG_INDEX}
+build_server: build_web
 	mkdir -p ${BUILD}/${CATALOG}
 	cp ${CATALOG_INDEX} ${BUILD}/${CATALOG}
 
@@ -33,8 +33,5 @@ build_web:
 
 ${CATALOG}:
 	utils/catalog download --destination ${CATALOG}
-
-${CATALOG_INDEX}:
-	utils/catalog build_server ${PROJECTS} --destination .
 
 .PHONY: clean install install_static build_server build_static build_web
