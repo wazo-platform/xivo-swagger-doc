@@ -18,6 +18,7 @@
   <script src='lib/backbone-min.js' type='text/javascript'></script>
   <script src='swagger-ui.min.js' type='text/javascript'></script>
   <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  <script src='lib/jsoneditor.min.js' type='text/javascript'></script>
   <script src='lib/marked.js' type='text/javascript'></script>
 
 <script type="text/javascript">
@@ -99,6 +100,7 @@ function loadSwagger(url) {
             log("Unable to Load SwaggerUI");
         },
         docExpansion: "none",
+        jsonEditor: false,
         apiSorter : "alpha",
         validatorUrl: null
     });
