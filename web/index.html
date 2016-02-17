@@ -77,7 +77,6 @@ function loadSpecFromLink(e) {
 function loadSpecFromForm(e) {
     e.preventDefault();
     var url = $('#input_baseUrl').val();
-    $('#input_apiKey').change(addAuthorization);
     loadSwagger(url);
 }
 
@@ -106,6 +105,9 @@ function loadSwagger(url) {
         showRequestHeaders: false,
         validatorUrl: null
     });
+
+    $('#input_apiKey').change(addAuthorization);
+
     window.swaggerUi.load();
 
     function log() {
