@@ -107,6 +107,13 @@ function loadSwagger(url) {
         validatorUrl: null
     });
     window.swaggerUi.load();
+
+    function log() {
+        if ('console' in window) {
+            console.log.apply(console, arguments);
+        }
+    }
+
 }
 
 function addAuthorization() {
