@@ -77,7 +77,6 @@ function loadSpecFromLink(e) {
 function loadSpecFromForm(e) {
     e.preventDefault();
     var url = $('#input_baseUrl').val();
-    $('#input_apiKey').change(addAuthorization);
     loadSwagger(url);
 }
 
@@ -106,7 +105,17 @@ function loadSwagger(url) {
         showRequestHeaders: false,
         validatorUrl: null
     });
+
+    $('#input_apiKey').change(addAuthorization);
+
     window.swaggerUi.load();
+
+    function log() {
+        if ('console' in window) {
+            console.log.apply(console, arguments);
+        }
+    }
+
 }
 
 function addAuthorization() {
@@ -115,13 +124,12 @@ function addAuthorization() {
     if(parts.length > 1) {
         var auth = "Basic " + btoa(apikey);
         authorization = new SwaggerClient.ApiKeyAuthorization("Authorization", auth, "header");
-        window.swaggerUi.api.clientAuthorizations.add("authorization", authorization);
+        window.swaggerUi.api.clientAuthorizations.add("xivo_auth_basic", authorization);
+        window.swaggerUi.api.clientAuthorizations.remove("xivo_auth_token");
     } else if (apikey != "") {
-        $("input[name*='X-Auth-Token']").each(function(index) {
-            $(this).val(apikey);
-        });
         authorization = new SwaggerClient.ApiKeyAuthorization("X-Auth-Token", apikey, "header");
-        window.swaggerUi.api.clientAuthorizations.add("authorization", authorization);
+        window.swaggerUi.api.clientAuthorizations.add("xivo_auth_token", authorization);
+        window.swaggerUi.api.clientAuthorizations.remove("xivo_auth_basic");
     }
 }
 
@@ -138,7 +146,7 @@ function addAuthorization() {
                 <input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/>
             </div>
             <div class='input'>
-                <input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/>
+                <input placeholder="token" id="input_apiKey" name="apiKey" type="text"/>
             </div>
             <div class='input'><a id="explore" href="#">Explore</a></div>
             </form>
