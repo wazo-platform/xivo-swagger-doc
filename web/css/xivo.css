@@ -4,7 +4,7 @@ body {
 }
 
 a,
-.swagger-section .swagger-ui-wrap a 
+.swagger-section .swagger-ui-wrap a
 {
     color: #e77d39;
 }
@@ -31,6 +31,10 @@ a:visited,
     background-color: #2c2927;
 }
 
+.swagger-section .authorize__btn {
+    display: None;
+}
+
 #header .header-block {
     vertical-align: top;
     padding: 5px;
@@ -48,9 +52,9 @@ a:visited,
 }
 
 .navcol h1 {
-  color: black;
-  font-size: 1.5em;
-  line-height: 1.3em;
-  padding: 10px 0 10px 0;
-  font-weight: bold;
+    color: black;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    padding: 10px 0 10px 0;
+    font-weight: bold;
 }
