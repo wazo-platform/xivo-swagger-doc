@@ -102,7 +102,15 @@ function loadSwagger(url) {
         },
         docExpansion: "none",
         jsonEditor: false,
-        apisSorter: "alpha",
+        apisSorter: function(a, b) {
+            if(a.name == 'deprecated') {
+                return 1
+            }
+            if(b.name == 'deprecated') {
+                return -1
+            }
+            return a.name.localeCompare(b.name)
+        },
         operationsSorter: "alpha",
         defaultModelRendering: 'schema',
         showRequestHeaders: false,
