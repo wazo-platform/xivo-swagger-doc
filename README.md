@@ -56,6 +56,14 @@ When adding a new Swagger spec, you need to:
 
 - edit index.json
 - edit contribs/repos
+```
+name:
+  file: api.json
+  folder: /path/to/file
+  many: True  # if True: search in each subfolder of `folder` to find `file`
+              # else: fetch the file `folder`/`file`
+```
+
 - add the following keys to your Swagger spec:
   - info/title  (string, ex: "XiVO AMId")
   - x-xivo-name (string, ex: "amid")
