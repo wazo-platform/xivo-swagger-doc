@@ -1,24 +1,24 @@
-#! /bin/sh
-# postinst script for xivo-web-interface
-#
-# see: dh_installdeb(1)
+#!/bin/sh
 
 set -e
 
 case "$1" in
-	configure)
-		set +e
-		invoke-rc.d nginx reload
-		set -e
-	;;
+    configure)
+        if dpkg --compare-versions "$2" lt '16.12'; then
+            ln -s /etc/nginx/locations/http-available/xivo-swagger-doc \
+                /etc/nginx/locations/http-enabled/xivo-swagger-doc
+            ln -s /etc/nginx/locations/https-available/xivo-swagger-doc \
+                /etc/nginx/locations/https-enabled/xivo-swagger-doc
+        fi
+    ;;
 
-	abort-upgrade|abort-remove|abort-deconfigure)
-	;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
 
-	*)
-		echo "postinst called with unknown argument \`$1'" >&2
-		exit 1
-	;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
 esac
 
 # dh_installdeb will replace this with shell code automatically
@@ -27,3 +27,4 @@ esac
 #DEBHELPER#
 
 exit 0
+

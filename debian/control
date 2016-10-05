@@ -1,15 +1,14 @@
 Source: xivo-swagger-doc
 Section: web
 Priority: extra
-Maintainer: XiVO Dev Team <dev@avencall.com>
+Maintainer: XiVO Dev Team <dev+pkg@proformatique.com>
 Uploaders: XiVO Builder Team <release@xivo.io>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.4
-Homepage: http://xivo.io
+Standards-Version: 3.9.6
 
 Package: xivo-swagger-doc
 Architecture: all
-Depends: nginx
+Depends: xivo-nginx
 Description: XIVO RESTful API documentation.
  Documentation for all REST APIs provided by XiVO. The documentation
  is generated using swagger.

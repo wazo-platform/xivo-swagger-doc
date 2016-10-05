@@ -1,0 +1,2 @@
+mv_conffile /etc/xivo-swagger-doc/nginx-http /etc/nginx/locations/http-available/xivo-swagger-doc 16.12
+mv_conffile /etc/xivo-swagger-doc/nginx-https /etc/nginx/locations/https-available/xivo-swagger-doc 16.12
