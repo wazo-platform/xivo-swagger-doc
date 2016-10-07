@@ -5,9 +5,9 @@ set -e
 case "$1" in
     configure)
         if dpkg --compare-versions "$2" lt '16.12'; then
-            ln -s /etc/nginx/locations/http-available/xivo-swagger-doc \
+            ln -sf /etc/nginx/locations/http-available/xivo-swagger-doc \
                 /etc/nginx/locations/http-enabled/xivo-swagger-doc
-            ln -s /etc/nginx/locations/https-available/xivo-swagger-doc \
+            ln -sf /etc/nginx/locations/https-available/xivo-swagger-doc \
                 /etc/nginx/locations/https-enabled/xivo-swagger-doc
         fi
     ;;
