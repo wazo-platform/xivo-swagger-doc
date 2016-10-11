@@ -4,17 +4,6 @@ XiVO Swagger Doc
 Documentation for all REST APIs being developed for XiVO. This project
 is a work in progress.
 
-Viewing documentation
-=====================
-
-To have a look at the current state of the documentation, host this
-directory in a HTTP server. If you have python installed, you can run:
-
-    python -m SimpleHTTPServer
-
-Then open your browser at ```http://localhost:8000/doc```
-
-
 Docker
 ======
 
@@ -27,20 +16,25 @@ port 80:
 Go to http://localhost:8000
 
 
-utils/catalog.py
-================
+How to use
+==========
 
 xivo-swagger-doc may be generated in two ways:
 
-* the whole documentation is statically bundled
-* generate only one page that redirects towards each service API spec dynamically.
+* the whole documentation is statically bundled (not interactive)
+* generate only one page that redirects towards each service API spec dynamically (interactive)
 
 
 static
 ------
 
     make build_static
-    make install_static
+    DESTDIR=/wherever/you/want make install_static
+
+You may also serve the doc locally, after building it:
+
+    cd _build
+    python -m SimpleHTTPServer
 
 dynamic
 ------
