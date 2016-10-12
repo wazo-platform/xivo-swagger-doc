@@ -1,15 +1,15 @@
 xivo-agentd:
-    file: api.json
+    file: api.yml
     folder: xivo_agent/swagger
     many: False
 
 xivo-amid:
-    file: api.json
+    file: api.yml
     folder: xivo_ami/resources/api
     many: False
 
 xivo-auth:
-    file: api.json
+    file: api.yml
     folder: xivo_auth/swagger
     many: False
 
@@ -19,16 +19,16 @@ xivo-confd:
     many: True
 
 xivo-ctid:
-    file: api.json
+    file: api.yml
     folder: xivo_cti/swagger
     many: False
 
 xivo-ctid-ng:
-    file: api.json
+    file: api.yml
     folder: xivo_ctid_ng/plugins
     many: True
 
 xivo-dird:
-    file: api.json
+    file: api.yml
     folder: xivo_dird/swagger
     many: False
