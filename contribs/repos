@@ -14,7 +14,7 @@ xivo-auth:
     many: False
 
 xivo-confd:
-    file: api.json
+    file: api.yml
     folder: xivo_confd/plugins
     many: True
 

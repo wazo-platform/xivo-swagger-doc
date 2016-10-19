@@ -24,26 +24,20 @@ class SpecScanner(object):
 
     def scan(self):
         for path, dirs, files in os.walk(self.root, followlinks=True):
-            files = fnmatch.filter(files, '*.json') + fnmatch.filter(files, '*.yml')
-            for filepath, spec, file_extension in self.filter_specs(path, files):
-                yield filepath, spec, file_extension
+            files = fnmatch.filter(files, '*.yml')
+            for filepath, spec in self.filter_specs(path, files):
+                yield filepath, spec
 
     def filter_specs(self, path, files):
         for filename in files:
-            file_extension = 'yml'
-            if filename.endswith('json'):
-                file_extension = 'json'
-
             filepath = os.path.join(path, filename)
-            spec = self.load_spec(filepath, file_extension)
+            spec = self.load_spec(filepath)
             if spec and self.is_swagger_spec(spec):
-                yield filepath, spec, file_extension
+                yield filepath, spec
 
-    def load_spec(self, filepath, file_extension):
+    def load_spec(self, filepath):
         with open(filepath) as f:
             try:
-                if file_extension == 'json':
-                    return json.loads(f.read())
                 return yaml.load(f.read())
             except ValueError:
                 return None
@@ -87,19 +81,19 @@ class StaticBuilder(CatalogBuilder):
 
     def build(self, scanner):
         items = []
-        for filepath, spec, file_extension in scanner.scan():
-            items.append(self.build_item(spec, file_extension))
-            self.copy_spec(spec, filepath, file_extension)
+        for filepath, spec in scanner.scan():
+            items.append(self.build_item(spec))
+            self.copy_spec(spec, filepath)
 
         self.write_index(items)
 
-    def build_item(self, spec, file_extension):
-        url = "{}/{}.{}".format(self.prefix, spec['x-xivo-name'], file_extension)
+    def build_item(self, spec):
+        url = "{}/{}.yml".format(self.prefix, spec['x-xivo-name'])
         return {'title': spec['info']['title'],
                 'url': url}
 
-    def copy_spec(self, spec, filepath, file_extension):
-        filename = "{}.{}".format(spec['x-xivo-name'], file_extension)
+    def copy_spec(self, spec, filepath):
+        filename = "{}.yml".format(spec['x-xivo-name'])
         destination = os.path.join(self.destination, filename)
         shutil.copy(filepath, destination)
 
@@ -132,32 +126,25 @@ def download(repos, branch, destination):
 
 
 def download_spec(repo, config, branch, destination):
-    file_extension = 'yml'
-    if config['file'].endswith('json'):
-        file_extension = 'json'
-
-    filepath = os.path.join(destination, str(uuid.uuid4()) + '.' + file_extension)
+    filepath = os.path.join(destination, str(uuid.uuid4()) + '.yml')
 
     if config['many']:
-        spec = download_github_files(repo, config, branch, file_extension)
+        spec = download_github_files(repo, config, branch)
     else:
         url = GITHUB_URL.format(repo=repo,
                                 branch=branch,
                                 folder=config['folder'],
                                 filename=config['file'])
-        spec = download_github_file(url, file_extension)
+        spec = download_github_file(url)
 
     if spec.get('info'):
         with open(filepath, 'wb') as f:
-            if file_extension == 'json':
-                f.write(json.dumps(spec))
-            else:
-                f.write(yaml.dump(spec))
+            f.write(yaml.dump(spec))
     else:
         raise Exception("could not download spec for {}".format(repo))
 
 
-def download_github_files(repo, config, branch, file_extension):
+def download_github_files(repo, config, branch):
     url = API_GITHUB_URL.format(repo, config['folder'])
     response = requests.get(url, params={'ref': branch})
     response.raise_for_status()
@@ -170,16 +157,14 @@ def download_github_files(repo, config, branch, file_extension):
                                 branch=branch,
                                 folder='{}/{}'.format(config['folder'], folder['name']),
                                 filename=config['file'])
-        single_spec = download_github_file(url, file_extension)
+        single_spec = download_github_file(url)
         api_spec = update(api_spec, single_spec)
     return api_spec
 
 
-def download_github_file(url, file_extension):
+def download_github_file(url):
     response = requests.get(url)
     if response.status_code == 200:
-        if file_extension == 'json':
-            return json.loads(response.text)
         return yaml.load(response.text)
     else:
         return {}

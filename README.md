@@ -52,7 +52,7 @@ When adding a new Swagger spec, you need to:
 - edit contribs/repos
 ```
 name:
-  file: api.json
+  file: api.yml
   folder: /path/to/file
   many: True  # if True: search in each subfolder of `folder` to find `file`
               # else: fetch the file `folder`/`file`
