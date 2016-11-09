@@ -30,5 +30,5 @@ xivo-ctid-ng:
 
 xivo-dird:
     file: api.yml
-    folder: xivo_dird/swagger
+    folder: xivo_dird/plugins/views
     many: False
