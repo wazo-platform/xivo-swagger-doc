@@ -10,7 +10,7 @@ Docker
 The Dockerfile creates an image with xivo-swagger-doc ready to be accessed on
 port 80:
 
-    docker build -t xivo/swagger .
+    docker build -t wazopbx/swagger .
     docker run -p 8000:80 xivo/swagger
 
 Go to http://localhost:8000
