@@ -1,7 +1,6 @@
 BUILD=_build
 CATALOG=catalog
 CATALOG_INDEX=index.json
-PROJECTS=$(shell echo $HOME/xivo)
 
 DESTDIR=.
 INSTALLDIR=usr/share/xivo-swagger-doc

@@ -1,5 +1,5 @@
 FROM nginx:latest
-MAINTAINER XiVO Team "dev@avencall.com"
+MAINTAINER Wazo Maintainers <dev.wazo@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 

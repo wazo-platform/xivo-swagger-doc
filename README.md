@@ -1,7 +1,7 @@
-XiVO Swagger Doc
+Wazo Swagger Doc
 ================
 
-Documentation for all REST APIs being developed for XiVO. This project
+Documentation for all REST APIs being developed for Wazo. This project
 is a work in progress.
 
 Docker
@@ -11,7 +11,7 @@ The Dockerfile creates an image with xivo-swagger-doc ready to be accessed on
 port 80:
 
     docker build -t wazopbx/swagger .
-    docker run -p 8000:80 xivo/swagger
+    docker run -p 8000:80 wazopbx/swagger
 
 Go to http://localhost:8000
 
@@ -59,7 +59,7 @@ name:
 ```
 
 - add the following keys to your Swagger spec:
-  - info/title  (string, ex: "XiVO AMId")
+  - info/title  (string, ex: "Wazo AMId")
   - x-xivo-name (string, ex: "amid")
   - x-xivo-port (int, ex: 9491)
 
@@ -70,5 +70,4 @@ Updating SwaggerUI
 You need to change:
 
 web/index.html
-web/css/xivo.css
-web/images/logo_small.png
+web/css/wazo.css

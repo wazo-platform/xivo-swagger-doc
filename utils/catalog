@@ -17,9 +17,9 @@ import yaml
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 DEFAULT_REPOS = os.path.join(ROOT_DIR, 'contribs', 'repos')
-API_GITHUB_URL = "https://api.github.com/repos/xivo-pbx/{}/contents/{}"
+API_GITHUB_URL = "https://api.github.com/repos/wazo-pbx/{}/contents/{}"
 
-GITHUB_URL = "https://raw.githubusercontent.com/xivo-pbx/{repo}/{branch}/{folder}/{filename}"
+GITHUB_URL = "https://raw.githubusercontent.com/wazo-pbx/{repo}/{branch}/{folder}/{filename}"
 
 
 class SpecScanner(object):
