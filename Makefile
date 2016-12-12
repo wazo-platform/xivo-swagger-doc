@@ -4,7 +4,7 @@ CATALOG_INDEX=index.json
 
 DESTDIR=.
 INSTALLDIR=usr/share/xivo-swagger-doc
-GIT_BRANCH ?= 'master'
+DOWNLOAD_GIT_BRANCH ?= 'master'
 
 all: clean build_server
 
@@ -32,6 +32,6 @@ build_web:
 	cp -r web/* ${BUILD}
 
 ${CATALOG}:
-	utils/catalog download --branch ${GIT_BRANCH} --destination ${CATALOG}
+	utils/catalog download --branch ${DOWNLOAD_GIT_BRANCH} --destination ${CATALOG}
 
 .PHONY: clean install install_static build_server build_static build_web
