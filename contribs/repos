@@ -13,6 +13,11 @@ xivo-auth:
     folder: xivo_auth/swagger
     many: False
 
+xivo-call-logs:
+    file: api.yml
+    folder: xivo_call_logs/plugins
+    many: True
+
 xivo-confd:
     file: api.yml
     folder: xivo_confd/plugins

@@ -19,6 +19,12 @@
             "title": "XiVO Auth"
         },
         {
+            "scheme": "https",
+            "path": "/1.0/api/api.yml",
+            "port": 9298,
+            "title": "XiVO Call Logs"
+        },
+        {
             "scheme": "http",
             "path": "/0.1/api/api.yml",
             "port": 9495,
