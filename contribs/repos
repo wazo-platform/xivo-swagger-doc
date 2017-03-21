@@ -1,3 +1,8 @@
+wazo-plugind:
+    file: api.yml
+    folder: wazo_plugind/swagger
+    many: False
+
 xivo-agentd:
     file: api.yml
     folder: xivo_agent/swagger
