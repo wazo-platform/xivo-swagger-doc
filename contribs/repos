@@ -3,6 +3,11 @@ wazo-plugind:
     folder: wazo_plugind/swagger
     many: False
 
+wazo-webhookd:
+    file: api.yml
+    folder: wazo_webhookd/plugins
+    many: True
+
 xivo-agentd:
     file: api.yml
     folder: xivo_agent/swagger
