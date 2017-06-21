@@ -1,3 +1,8 @@
+wazo-call-logd:
+    file: api.yml
+    folder: wazo_call_logd/plugins
+    many: True
+
 wazo-plugind:
     file: api.yml
     folder: wazo_plugind/swagger
@@ -22,11 +27,6 @@ xivo-auth:
     file: api.yml
     folder: xivo_auth/swagger
     many: False
-
-xivo-call-logs:
-    file: api.yml
-    folder: xivo_call_logs/plugins
-    many: True
 
 xivo-confd:
     file: api.yml
