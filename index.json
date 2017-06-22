@@ -15,6 +15,12 @@
         {
             "scheme": "https",
             "path": "/1.0/api/api.yml",
+            "port": 9300,
+            "title": "Wazo WebHookd"
+        },
+        {
+            "scheme": "https",
+            "path": "/1.0/api/api.yml",
             "port": 9493,
             "title": "XiVO Agentd"
         },
@@ -40,7 +46,7 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9500,
-            "title": "XiVO CTId ng"
+            "title": "XiVO CTId NG"
         },
         {
             "scheme": "https",
@@ -53,12 +59,6 @@
             "path": "/0.1/api/api.yml",
             "port": 9489,
             "title": "XiVO Dird"
-        },
-        {
-            "scheme": "https",
-            "path": "/1.0/api/api.yml",
-            "port": 9300,
-            "title": "wazo-webhookd"
         }
     ]
 }
