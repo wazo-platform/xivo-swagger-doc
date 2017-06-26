@@ -4,61 +4,61 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9298,
-            "title": "Wazo Call Logd"
+            "title": "wazo-call-logd"
         },
         {
             "scheme": "https",
             "path": "/0.1/api/api.yml",
             "port": 9503,
-            "title": "Wazo Plugind"
+            "title": "wazo-plugind"
         },
         {
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9300,
-            "title": "Wazo WebHookd"
+            "title": "wazo-webhookd"
         },
         {
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9493,
-            "title": "XiVO Agentd"
+            "title": "xivo-agentd"
         },
         {
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9491,
-            "title": "XiVO AMId"
+            "title": "xivo-amid"
         },
         {
             "scheme": "https",
             "path": "/0.1/api/api.yml",
             "port": 9497,
-            "title": "XiVO Auth"
-        },
-        {
-            "scheme": "http",
-            "path": "/0.1/api/api.yml",
-            "port": 9495,
-            "title": "XiVO CTId"
-        },
-        {
-            "scheme": "https",
-            "path": "/1.0/api/api.yml",
-            "port": 9500,
-            "title": "XiVO CTId NG"
+            "title": "xivo-auth"
         },
         {
             "scheme": "https",
             "path": "/1.1/api/api.yml",
             "port": 9486,
-            "title": "XiVO Confd"
+            "title": "xivo-confd"
+        },
+        {
+            "scheme": "http",
+            "path": "/0.1/api/api.yml",
+            "port": 9495,
+            "title": "xivo-ctid"
+        },
+        {
+            "scheme": "https",
+            "path": "/1.0/api/api.yml",
+            "port": 9500,
+            "title": "xivo-ctid-ng"
         },
         {
             "scheme": "https",
             "path": "/0.1/api/api.yml",
             "port": 9489,
-            "title": "XiVO Dird"
+            "title": "xivo-dird"
         }
     ]
 }
