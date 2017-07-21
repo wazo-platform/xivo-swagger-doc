@@ -8,7 +8,7 @@
         },
         {
             "scheme": "https",
-            "path": "/0.1/api/api.yml",
+            "path": "/0.2/api/api.yml",
             "port": 9503,
             "title": "wazo-plugind"
         },
