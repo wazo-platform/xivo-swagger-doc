@@ -23,7 +23,7 @@ xivo-amid:
     folder: xivo_ami/resources/api
     many: False
 
-xivo-auth:
+wazo-auth:
     file: api.yml
     folder: wazo_auth/swagger
     many: False
