@@ -34,7 +34,7 @@
             "scheme": "https",
             "path": "/0.1/api/api.yml",
             "port": 9497,
-            "title": "xivo-auth"
+            "title": "wazo-auth"
         },
         {
             "scheme": "https",
