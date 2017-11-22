@@ -25,8 +25,8 @@ xivo-amid:
 
 wazo-auth:
     file: api.yml
-    folder: wazo_auth/swagger
-    many: False
+    folder: wazo_auth/plugins/http
+    many: True
 
 xivo-confd:
     file: api.yml
