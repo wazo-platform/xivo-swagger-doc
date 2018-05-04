@@ -58,7 +58,7 @@
             "scheme": "https",
             "path": "/0.1/api/api.yml",
             "port": 9489,
-            "title": "xivo-dird"
+            "title": "wazo-dird"
         }
     ]
 }

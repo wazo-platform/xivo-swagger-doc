@@ -43,7 +43,7 @@ xivo-ctid-ng:
     folder: xivo_ctid_ng/plugins
     many: True
 
-xivo-dird:
+wazo-dird:
     file: api.yml
-    folder: xivo_dird/plugins/views
+    folder: wazo_dird/plugins/views
     many: True
