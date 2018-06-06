@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 case "$1" in
     configure)
-        if dpkg --compare-versions "$2" lt '16.12'; then
+        previous_version="$2"
+
+        if [[ -z "${previous_version}" ]]; then
             ln -sf /etc/nginx/locations/http-available/xivo-swagger-doc \
                 /etc/nginx/locations/http-enabled/xivo-swagger-doc
             ln -sf /etc/nginx/locations/https-available/xivo-swagger-doc \
