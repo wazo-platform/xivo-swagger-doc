@@ -50,7 +50,7 @@
         },
         {
             "scheme": "http",
-            "path": "/1.0/api/api.yml",
+            "path": "/api/api.yml",
             "port": 8666,
             "title": "xivo-provd"
         },

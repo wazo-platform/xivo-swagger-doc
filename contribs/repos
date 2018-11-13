@@ -45,7 +45,7 @@ xivo-ctid-ng:
 
 xivo-provd:
     file: api.yml
-    folder: provd/rest
+    folder: provd/rest/api
     many: False
 
 wazo-dird:
