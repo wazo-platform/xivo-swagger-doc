@@ -43,6 +43,11 @@ xivo-ctid-ng:
     folder: xivo_ctid_ng/plugins
     many: True
 
+xivo-provd:
+    file: api.yml
+    folder: provd/rest/api
+    many: False
+
 wazo-dird:
     file: api.yml
     folder: wazo_dird/plugins/views
