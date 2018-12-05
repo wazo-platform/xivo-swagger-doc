@@ -43,7 +43,7 @@ xivo-ctid-ng:
     folder: xivo_ctid_ng/plugins
     many: True
 
-xivo-provd:
+xivo-provisioning:
     file: api.yml
     folder: provd/rest/api
     many: False
