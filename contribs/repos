@@ -52,3 +52,8 @@ wazo-dird:
     file: api.yml
     folder: wazo_dird/plugins/views
     many: True
+
+wazo-setupd:
+    file: api.yml
+    folder: wazo_setupd/plugins
+    many: True

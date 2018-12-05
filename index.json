@@ -65,6 +65,12 @@
             "path": "/0.1/api/api.yml",
             "port": 9489,
             "title": "wazo-dird"
+        },
+        {
+            "scheme": "https",
+            "path": "/1.0/api/api.yml",
+            "port": 9302,
+            "title": "wazo-setupd"
         }
     ]
 }
