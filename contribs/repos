@@ -50,7 +50,7 @@ xivo-provisioning:
 
 wazo-dird:
     file: api.yml
-    folder: wazo_dird/plugins/views
+    folder: wazo_dird/plugins
     many: True
 
 wazo-setupd:
