@@ -57,3 +57,8 @@ wazo-setupd:
     file: api.yml
     folder: wazo_setupd/plugins
     many: True
+
+wazo-chatd:
+    file: api.yml
+    folder: wazo_chatd/plugins
+    many: True
