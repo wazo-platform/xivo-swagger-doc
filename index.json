@@ -44,12 +44,6 @@
         },
         {
             "scheme": "http",
-            "path": "/0.1/api/api.yml",
-            "port": 9495,
-            "title": "xivo-ctid"
-        },
-        {
-            "scheme": "http",
             "path": "/api/api.yml",
             "port": 8666,
             "title": "xivo-provd"

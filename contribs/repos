@@ -33,11 +33,6 @@ xivo-confd:
     folder: xivo_confd/plugins
     many: True
 
-xivo-ctid:
-    file: api.yml
-    folder: xivo_cti/swagger
-    many: False
-
 xivo-ctid-ng:
     file: api.yml
     folder: xivo_ctid_ng/plugins
