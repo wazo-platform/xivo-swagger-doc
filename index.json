@@ -43,7 +43,7 @@
             "title": "xivo-confd"
         },
         {
-            "scheme": "http",
+            "scheme": "https",
             "path": "/api/api.yml",
             "port": 8666,
             "title": "xivo-provd"
