@@ -52,7 +52,7 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9500,
-            "title": "xivo-ctid-ng"
+            "title": "wazo-calld"
         },
         {
             "scheme": "https",

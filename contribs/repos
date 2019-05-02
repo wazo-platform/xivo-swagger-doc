@@ -33,9 +33,9 @@ xivo-confd:
     folder: xivo_confd/plugins
     many: True
 
-xivo-ctid-ng:
+wazo-calld:
     file: api.yml
-    folder: xivo_ctid_ng/plugins
+    folder: wazo_calld/plugins
     many: True
 
 xivo-provisioning:
