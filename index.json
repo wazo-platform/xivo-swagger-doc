@@ -40,7 +40,7 @@
             "scheme": "https",
             "path": "/1.1/api/api.yml",
             "port": 9486,
-            "title": "xivo-confd"
+            "title": "wazo-confd"
         },
         {
             "scheme": "https",

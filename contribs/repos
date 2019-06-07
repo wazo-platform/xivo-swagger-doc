@@ -28,9 +28,9 @@ wazo-auth:
     folder: wazo_auth/plugins/http
     many: True
 
-xivo-confd:
+wazo-confd:
     file: api.yml
-    folder: xivo_confd/plugins
+    folder: wazo_confd/plugins
     many: True
 
 wazo-calld:
