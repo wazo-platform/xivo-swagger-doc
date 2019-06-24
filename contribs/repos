@@ -15,7 +15,7 @@ wazo-webhookd:
 
 wazo-agentd:
     file: api.yml
-    folder: wazo_agent/swagger
+    folder: wazo_agentd/swagger
     many: False
 
 xivo-amid:
