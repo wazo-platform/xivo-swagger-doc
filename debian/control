@@ -7,7 +7,7 @@ Standards-Version: 3.9.6
 
 Package: xivo-swagger-doc
 Architecture: all
-Depends: xivo-nginx
+Depends: wazo-nginx
 Description: Wazo RESTful API documentation.
  Documentation for all REST APIs provided by Wazo. The documentation
  is generated using swagger.
