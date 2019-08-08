@@ -38,7 +38,7 @@ wazo-calld:
     folder: wazo_calld/plugins
     many: True
 
-xivo-provisioning:
+wazo-provd:
     file: api.yml
     folder: provd/rest/api
     many: False

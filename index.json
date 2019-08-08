@@ -46,7 +46,7 @@
             "scheme": "https",
             "path": "/0.2/api/api.yml",
             "port": 8666,
-            "title": "xivo-provd"
+            "title": "wazo-provd"
         },
         {
             "scheme": "https",
