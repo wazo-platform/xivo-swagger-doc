@@ -18,9 +18,9 @@ wazo-agentd:
     folder: wazo_agentd/swagger
     many: False
 
-xivo-amid:
+wazo-amid:
     file: api.yml
-    folder: xivo_ami/resources/api
+    folder: wazo_amid/resources/api
     many: False
 
 wazo-auth:

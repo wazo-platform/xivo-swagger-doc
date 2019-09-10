@@ -28,7 +28,7 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9491,
-            "title": "xivo-amid"
+            "title": "wazo-amid"
         },
         {
             "scheme": "https",
