@@ -43,6 +43,11 @@ wazo-provd:
     folder: provd/rest/api
     many: False
 
+wazo-phoned:
+    file: api.yml
+    folder: wazo_phoned/plugins
+    many: True
+
 wazo-dird:
     file: api.yml
     folder: wazo_dird/plugins

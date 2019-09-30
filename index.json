@@ -62,6 +62,12 @@
         },
         {
             "scheme": "https",
+            "path": "/0.1/api/api.yml",
+            "port": 9499,
+            "title": "wazo-phoned"
+        },
+        {
+            "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 9302,
             "title": "wazo-setupd"
