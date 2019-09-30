@@ -25,7 +25,7 @@ install_static: build_static
 	cp -r ${BUILD}/* ${DESTDIR}
 
 build_static: build_web ${CATALOG}
-	utils/catalog build_static ${CATALOG} --destination ${BUILD}/${CATALOG}
+	utils/catalog build-static ${CATALOG} --destination ${BUILD}/${CATALOG}
 
 build_web:
 	mkdir -p ${BUILD}
