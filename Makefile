@@ -24,14 +24,11 @@ install_static: build_static
 	mkdir -p ${DESTDIR}
 	cp -r ${BUILD}/* ${DESTDIR}
 
-build_static: build_web ${CATALOG}
+build_static: build_web
 	utils/catalog build-static ${CATALOG} --destination ${BUILD}/${CATALOG}
 
 build_web:
 	mkdir -p ${BUILD}
 	cp -r web/* ${BUILD}
-
-${CATALOG}:
-	utils/catalog download --branch ${DOWNLOAD_GIT_BRANCH} --destination ${CATALOG}
 
 .PHONY: clean install install_static build_server build_static build_web
