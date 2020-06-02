@@ -65,7 +65,11 @@ function buildSpecUrl(info) {
     if (info.url) {
         return info.url;
     } else if (info.port && info.path && info.scheme) {
+      if (info.prefix) {
+        return info.scheme + "://" + window.location.hostname + ":" + info.port + info.prefix + info.path;
+      } else {
         return info.scheme + "://" + window.location.hostname + ":" + info.port + info.path;
+      }
     }
     return null;
 }
