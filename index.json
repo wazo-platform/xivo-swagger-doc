@@ -4,7 +4,7 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 443,
-            "prefix": "/api/call-lod",
+            "prefix": "/api/call-logd",
             "title": "wazo-call-logd"
         },
         {
