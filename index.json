@@ -81,7 +81,7 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 443,
-            "prefix": "/api/setupd/",
+            "prefix": "/api/setupd",
             "title": "wazo-setupd"
         },
         {
