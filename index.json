@@ -73,8 +73,8 @@
         {
             "scheme": "https",
             "path": "/0.1/api/api.yml",
-            "port": 443,
-            "prefix": "/api/phoned",
+            "port": 9499,
+            "prefix": null,
             "title": "wazo-phoned"
         },
         {
