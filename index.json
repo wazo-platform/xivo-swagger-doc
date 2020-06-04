@@ -52,8 +52,8 @@
         {
             "scheme": "https",
             "path": "/0.2/api/api.yml",
-            "port": 8666,
-            "prefix": null,
+            "port": 443,
+            "prefix": "/api/provd",
             "title": "wazo-provd"
         },
         {
