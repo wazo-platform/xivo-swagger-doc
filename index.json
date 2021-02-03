@@ -4,27 +4,6 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 443,
-            "prefix": "/api/call-logd",
-            "title": "wazo-call-logd"
-        },
-        {
-            "scheme": "https",
-            "path": "/0.2/api/api.yml",
-            "port": 443,
-            "prefix": "/api/plugind",
-            "title": "wazo-plugind"
-        },
-        {
-            "scheme": "https",
-            "path": "/1.0/api/api.yml",
-            "port": 443,
-            "prefix": "/api/webhookd",
-            "title": "wazo-webhookd"
-        },
-        {
-            "scheme": "https",
-            "path": "/1.0/api/api.yml",
-            "port": 443,
             "prefix": "/api/agentd",
             "title": "wazo-agentd"
         },
@@ -44,17 +23,10 @@
         },
         {
             "scheme": "https",
-            "path": "/1.1/api/api.yml",
+            "path": "/1.0/api/api.yml",
             "port": 443,
-            "prefix": "/api/confd",
-            "title": "wazo-confd"
-        },
-        {
-            "scheme": "https",
-            "path": "/0.2/api/api.yml",
-            "port": 443,
-            "prefix": "/api/provd",
-            "title": "wazo-provd"
+            "prefix": "/api/call-logd",
+            "title": "wazo-call-logd"
         },
         {
             "scheme": "https",
@@ -62,6 +34,20 @@
             "port": 443,
             "prefix": "/api/calld",
             "title": "wazo-calld"
+        },
+        {
+            "scheme": "https",
+            "path": "/1.0/api/api.yml",
+            "port": 443,
+            "prefix": "/api/chatd",
+            "title": "wazo-chatd"
+        },
+        {
+            "scheme": "https",
+            "path": "/1.1/api/api.yml",
+            "port": 443,
+            "prefix": "/api/confd",
+            "title": "wazo-confd"
         },
         {
             "scheme": "https",
@@ -79,6 +65,20 @@
         },
         {
             "scheme": "https",
+            "path": "/0.2/api/api.yml",
+            "port": 443,
+            "prefix": "/api/plugind",
+            "title": "wazo-plugind"
+        },
+        {
+            "scheme": "https",
+            "path": "/0.2/api/api.yml",
+            "port": 443,
+            "prefix": "/api/provd",
+            "title": "wazo-provd"
+        },
+        {
+            "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 443,
             "prefix": "/api/setupd",
@@ -88,8 +88,8 @@
             "scheme": "https",
             "path": "/1.0/api/api.yml",
             "port": 443,
-            "prefix": "/api/chatd",
-            "title": "wazo-chatd"
+            "prefix": "/api/webhookd",
+            "title": "wazo-webhookd"
         }
     ]
 }
