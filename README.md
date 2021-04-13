@@ -27,3 +27,4 @@ You need to change:
 
 web/index.html
 web/css/wazo.css
+
