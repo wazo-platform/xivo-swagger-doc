@@ -7,8 +7,6 @@ case "$1" in
         previous_version="$2"
 
         if [[ -z "${previous_version}" ]]; then
-            ln -sf /etc/nginx/locations/http-available/xivo-swagger-doc \
-                /etc/nginx/locations/http-enabled/xivo-swagger-doc
             ln -sf /etc/nginx/locations/https-available/xivo-swagger-doc \
                 /etc/nginx/locations/https-enabled/xivo-swagger-doc
         fi
