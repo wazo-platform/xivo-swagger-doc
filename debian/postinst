@@ -9,6 +9,8 @@ case "$1" in
         if [[ -z "${previous_version}" ]]; then
             ln -sf /etc/nginx/locations/https-available/xivo-swagger-doc \
                 /etc/nginx/locations/https-enabled/xivo-swagger-doc
+        elif dpkg --compare-versions "${previous_version}" le '22.08~'; then
+            rm -f /etc/nginx/locations/http-enabled/xivo-swagger-doc
         fi
     ;;
 
