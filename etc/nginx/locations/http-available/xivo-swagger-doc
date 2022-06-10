@@ -1,3 +1,0 @@
-location ^~ /api {
-    alias /usr/share/xivo-swagger-doc/;
-}
