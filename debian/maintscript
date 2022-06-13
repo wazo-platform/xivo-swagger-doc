@@ -1,1 +1,1 @@
-rm_conffile /etc/nginx/locations/http-available/xivo-swagger-doc 22.08~
+rm_conffile /etc/nginx/locations/http-available/xivo-swagger-doc 22.08
